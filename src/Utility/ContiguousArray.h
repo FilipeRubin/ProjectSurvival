@@ -7,10 +7,14 @@ template<typename T>
 class ContiguousArray
 {
 public:
-	ContiguousArray(size_t size) :
-		m_array(new T[size]),
+	ContiguousArray(size_t size = 0U) :
+		m_array(nullptr),
 		m_size(size)
 	{
+		if (size != 0U)
+		{
+			m_array = new T[size];
+		}
 	}
 
 	ContiguousArray(const std::initializer_list<T>& elements) :
@@ -37,17 +41,17 @@ public:
 
 	~ContiguousArray()
 	{
-		Cleanup();
+		Clear();
 	}
 
 	ContiguousArray<T>& operator=(const ContiguousArray<T>& other)
 	{
 		if (this != &other)
 		{
-			Cleanup();
+			Clear();
 			m_array = new T[other.m_size];
 			m_size = other.m_size;
-			std::memcpy(m_array, other.m_array, other.m_size * sizeof(T));
+			std::copy(other.m_array, other.m_array + other.m_size, m_array);
 		}
 
 		return *this;
@@ -57,7 +61,7 @@ public:
 	{
 		if (this != &other)
 		{
-			Cleanup();
+			Clear();
 			m_array = other.m_array;
 			m_size = other.m_size;
 			other.m_array = nullptr;
@@ -84,8 +88,11 @@ public:
 
 	void Append(const std::initializer_list<T>& elements)
 	{
+		if (elements.size() == 0)
+			return;
+
 		const T* arrayBegin = m_array;
-		const T* arrayEnd = begin + m_size;
+		const T* arrayEnd = arrayBegin + m_size;
 
 		T* newArray = new T[m_size + elements.size()];
 
@@ -97,15 +104,25 @@ public:
 		m_size += elements.size();
 	}
 
+	void Clear()
+	{
+		delete[] m_array;
+		m_array = nullptr;
+		m_size = 0;
+	}
+
+	bool IsValid() const
+	{
+		return m_array != nullptr;
+	}
+
 	void RemoveAt(size_t index)
 	{
 		assert(index < m_size);
 
 		if (m_size == 1)
 		{
-			delete[] m_array;
-			m_array = nullptr;
-			m_size = 0;
+			Clear();
 			return;
 		}
 		
@@ -123,18 +140,7 @@ public:
 	{
 		return m_size;
 	}
-
-	bool IsValid() const
-	{
-		return m_array != nullptr;
-	}
 private:
 	T* m_array;
 	size_t m_size;
-
-	void Cleanup()
-	{
-		delete[] m_array;
-		m_size = 0U;
-	}
 };

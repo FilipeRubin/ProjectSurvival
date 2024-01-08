@@ -1,6 +1,5 @@
 #pragma once
 #include "Renderer/IRenderer.h"
-#include <memory>
 
 class Game
 {

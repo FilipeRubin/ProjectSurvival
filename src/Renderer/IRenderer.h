@@ -1,4 +1,6 @@
 #pragma once
+#include <memory>
+#include "IMesh.h"
 
 class IRenderer
 {
