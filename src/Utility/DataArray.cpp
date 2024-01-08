@@ -1,5 +1,6 @@
 #include "DataArray.h"
-#include <cstddef>
+#include <cassert>
+#include <algorithm>
 
 using std::byte;
 
@@ -20,6 +21,7 @@ DataArray::DataArray(DataArray&& other) noexcept :
 
 DataArray::~DataArray()
 {
+	delete[] m_data;
 }
 
 DataArray& DataArray::operator=(DataArray&& other) noexcept
@@ -35,9 +37,26 @@ DataArray& DataArray::operator=(DataArray&& other) noexcept
 	return *this;
 }
 
+void DataArray::Clear()
+{
+	std::fill(m_data, m_data + m_size, byte(0));
+}
+
 const void* DataArray::GetData() const
 {
 	return m_data;
+}
+
+void DataArray::SetData(const byte* pData, size_t size, size_t offset)
+{
+	assert(IsValid());
+	assert((size + offset) <= m_size);
+	std::copy(pData, pData + size, m_data + offset);
+}
+
+size_t DataArray::Size() const
+{
+	return m_size;
 }
 
 bool DataArray::IsValid() const
