@@ -1,8 +1,9 @@
 #pragma once
-#include <array>
+#include "Data/MeshData.h"
 
 class IMesh
 {
 public:
-	virtual void Load() = 0;
+	virtual ~IMesh() = default;
+	virtual void LoadMeshData(const MeshData& meshData) = 0;
 };

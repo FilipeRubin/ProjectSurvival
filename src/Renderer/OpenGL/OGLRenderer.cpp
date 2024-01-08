@@ -1,4 +1,5 @@
 #include "OGLRenderer.h"
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 OGLRenderer::OGLRenderer() :
@@ -22,6 +23,11 @@ void OGLRenderer::Initialize()
 	}
 
 	glfwMakeContextCurrent(m_pWindow);
+
+	if (gladLoadGL() == 0)
+	{
+		return;
+	}
 
 	m_isInitialized = true;
 }

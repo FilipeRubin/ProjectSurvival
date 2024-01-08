@@ -167,15 +167,24 @@
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Renderer\Data\MeshData.cpp" />
+    <ClCompile Include="src\Renderer\OpenGL\OGLMesh.cpp" />
     <ClCompile Include="src\Renderer\OpenGL\OGLRenderer.cpp" />
+    <ClCompile Include="src\Renderer\OpenGL\VBO.cpp" />
+    <ClCompile Include="src\Utility\DataArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Renderer\Data\MeshData.h" />
     <ClInclude Include="src\Renderer\IMesh.h" />
     <ClInclude Include="src\Renderer\IRenderer.h" />
+    <ClInclude Include="src\Renderer\OpenGL\OGLMesh.h" />
     <ClInclude Include="src\Renderer\OpenGL\OGLRenderer.h" />
+    <ClInclude Include="src\Renderer\OpenGL\VBO.h" />
     <ClInclude Include="src\Utility\ContiguousArray.h" />
+    <ClInclude Include="src\Utility\DataArray.h" />
+    <ClInclude Include="src\Utility\Vector2.h" />
+    <ClInclude Include="src\Utility\Vector3.h" />
+    <ClInclude Include="src\Utility\Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

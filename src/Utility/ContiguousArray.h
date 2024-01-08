@@ -9,7 +9,7 @@ class ContiguousArray
 public:
 	ContiguousArray(size_t size = 0U) :
 		m_array(nullptr),
-		m_size(size)
+		m_length(size)
 	{
 		if (size != 0U)
 		{
@@ -19,24 +19,24 @@ public:
 
 	ContiguousArray(const std::initializer_list<T>& elements) :
 		m_array(new T[elements.size()]),
-		m_size(elements.size())
+		m_length(elements.size())
 	{
 		std::copy(elements.begin(), elements.end(), m_array);
 	}
 
 	ContiguousArray(const ContiguousArray<T>& other) :
-		m_array(new T[other.m_size]),
-		m_size(other.m_size)
+		m_array(new T[other.m_length]),
+		m_length(other.m_length)
 	{
-		std::copy(other.m_array, other.m_array + other.m_size, m_array);
+		std::copy(other.m_array, other.m_array + other.m_length, m_array);
 	}
 
 	ContiguousArray(ContiguousArray<T>&& other) noexcept :
 		m_array(other.m_array),
-		m_size(other.m_size)
+		m_length(other.m_length)
 	{
 		other.m_array = nullptr;
-		other.m_size = 0U;
+		other.m_length = 0U;
 	}
 
 	~ContiguousArray()
@@ -49,9 +49,9 @@ public:
 		if (this != &other)
 		{
 			Clear();
-			m_array = new T[other.m_size];
-			m_size = other.m_size;
-			std::copy(other.m_array, other.m_array + other.m_size, m_array);
+			m_array = new T[other.m_length];
+			m_length = other.m_length;
+			std::copy(other.m_array, other.m_array + other.m_length, m_array);
 		}
 
 		return *this;
@@ -63,9 +63,9 @@ public:
 		{
 			Clear();
 			m_array = other.m_array;
-			m_size = other.m_size;
+			m_length = other.m_length;
 			other.m_array = nullptr;
-			other.m_size = 0U;
+			other.m_length = 0U;
 		}
 
 		return *this;
@@ -78,12 +78,12 @@ public:
 
 	void Append(const T& element)
 	{
-		T* newArray = new T[m_size + 1U];
-		std::copy(m_array, m_array + m_size, newArray);
-		newArray[m_size] = element;
+		T* newArray = new T[m_length + 1U];
+		std::copy(m_array, m_array + m_length, newArray);
+		newArray[m_length] = element;
 		delete[] m_array;
 		m_array = newArray;
-		m_size++;
+		m_length++;
 	}
 
 	void Append(const std::initializer_list<T>& elements)
@@ -92,23 +92,23 @@ public:
 			return;
 
 		const T* arrayBegin = m_array;
-		const T* arrayEnd = arrayBegin + m_size;
+		const T* arrayEnd = arrayBegin + m_length;
 
-		T* newArray = new T[m_size + elements.size()];
+		T* newArray = new T[m_length + elements.size()];
 
 		std::copy(arrayBegin, arrayEnd, newArray);
-		std::copy(elements.begin(), elements.end(), newArray + m_size);
+		std::copy(elements.begin(), elements.end(), newArray + m_length);
 
 		delete[] m_array;
 		m_array = newArray;
-		m_size += elements.size();
+		m_length += elements.size();
 	}
 
 	void Clear()
 	{
 		delete[] m_array;
 		m_array = nullptr;
-		m_size = 0;
+		m_length = 0;
 	}
 
 	bool IsValid() const
@@ -118,29 +118,29 @@ public:
 
 	void RemoveAt(size_t index)
 	{
-		assert(index < m_size);
+		assert(index < m_length);
 
-		if (m_size == 1)
+		if (m_length == 1)
 		{
 			Clear();
 			return;
 		}
 		
-		T* newArray = new T[m_size - 1];
+		T* newArray = new T[m_length - 1];
 
 		std::copy(m_array, m_array + index, newArray);
-		std::copy(m_array + index + 1, m_array + m_size, newArray + index);
+		std::copy(m_array + index + 1, m_array + m_length, newArray + index);
 
 		delete[] m_array;
 		m_array = newArray;
-		m_size--;
+		m_length--;
 	}
 
-	size_t Size() const
+	size_t Length() const
 	{
-		return m_size;
+		return m_length;
 	}
 private:
 	T* m_array;
-	size_t m_size;
+	size_t m_length;
 };

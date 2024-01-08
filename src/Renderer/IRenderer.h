@@ -11,5 +11,5 @@ public:
 	virtual bool IsRunning() = 0;
 	virtual void RenderFrame() = 0;
 	virtual void Cleanup() = 0;
-	//virtual std::unique_ptr<IMesh> CreateMesh() = 0;
+	virtual std::unique_ptr<IMesh> CreateMesh() = 0;
 };
