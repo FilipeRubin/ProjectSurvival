@@ -5,13 +5,14 @@ class DataArray
 {
 public:
 	DataArray(size_t size);
-	DataArray(const DataArray& other) = delete;
+	DataArray(const DataArray& other);
 	DataArray(DataArray&& other) noexcept;
 	~DataArray();
-	DataArray& operator=(const DataArray& other) = delete;
+	DataArray& operator=(const DataArray& other);
 	DataArray& operator=(DataArray&& other) noexcept;
 	void Clear();
-	const void* GetData() const;
+	void Fill(std::byte value);
+	const std::byte* GetData() const;
 	void SetData(const std::byte* pData, size_t size, size_t offset);
 	size_t Size() const;
 	bool IsValid() const;

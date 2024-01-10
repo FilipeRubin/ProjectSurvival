@@ -1,5 +1,6 @@
 #pragma once
 #include "Renderer/IRenderer.h"
+#include "Utility/ContiguousArray.h"
 
 class Game
 {
@@ -8,4 +9,5 @@ public:
 	void Run();
 private:
 	std::unique_ptr<IRenderer> m_renderer;
+	ContiguousArray<IMesh*> m_meshes;
 };

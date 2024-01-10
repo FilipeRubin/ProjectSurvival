@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "IMesh.h"
+#include "IShader.h"
 
 class IRenderer
 {
@@ -12,4 +13,5 @@ public:
 	virtual void RenderFrame() = 0;
 	virtual void Cleanup() = 0;
 	virtual std::unique_ptr<IMesh> CreateMesh() = 0;
+	virtual std::unique_ptr<IShader> CreateShader() = 0;
 };

@@ -11,6 +11,13 @@ DataArray::DataArray(size_t size) :
 	m_data = new byte[size];
 }
 
+DataArray::DataArray(const DataArray& other)
+{
+	m_data = new byte[other.m_size];
+	std::copy(other.m_data, other.m_data + other.m_size, m_data);
+	m_size = other.m_size;
+}
+
 DataArray::DataArray(DataArray&& other) noexcept :
 	m_data(other.m_data),
 	m_size(other.m_size)
@@ -22,6 +29,13 @@ DataArray::DataArray(DataArray&& other) noexcept :
 DataArray::~DataArray()
 {
 	delete[] m_data;
+}
+
+DataArray& DataArray::operator=(const DataArray& other)
+{
+	delete[] m_data;
+	std::copy(other.m_data, other.m_data + other.m_size, m_data);
+	m_size = other.m_size;
 }
 
 DataArray& DataArray::operator=(DataArray&& other) noexcept
@@ -39,12 +53,18 @@ DataArray& DataArray::operator=(DataArray&& other) noexcept
 
 void DataArray::Clear()
 {
-	std::fill(m_data, m_data + m_size, byte(0));
+	delete[] m_data;
+	m_size = 0;
 }
 
-const void* DataArray::GetData() const
+void DataArray::Fill(byte value)
 {
-	return m_data;
+	std::fill(m_data, m_data + m_size, value);
+}
+
+const std::byte* DataArray::GetData() const
+{
+	return static_cast<const std::byte*>(m_data);
 }
 
 void DataArray::SetData(const byte* pData, size_t size, size_t offset)
