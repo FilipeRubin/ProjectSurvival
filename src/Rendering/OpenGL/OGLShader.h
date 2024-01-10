@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <string>
 
-class OGLShader : IShader
+class OGLShader
 {
 public:
 	OGLShader();
@@ -12,8 +12,8 @@ public:
 	~OGLShader();
 	OGLShader& operator=(const OGLShader& other) = delete;
 	OGLShader& operator=(OGLShader&& other) noexcept;
-	void Compile() override;
-	void Use() override;
+	void Compile();
+	void Use();
 	void Load(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 private:
 	GLuint m_program;

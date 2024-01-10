@@ -9,5 +9,4 @@ public:
 	void Run();
 private:
 	std::unique_ptr<IRenderer> m_renderer;
-	ContiguousArray<IMesh*> m_meshes;
 };

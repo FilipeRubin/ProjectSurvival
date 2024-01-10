@@ -9,7 +9,7 @@ public:
 	bool IsInitialized() override;
 	bool IsRunning() override;
 	void RenderFrame() override;
-	void Cleanup() override;
+	void Terminate() override;
 private:
 	bool m_isInitialized;
 	struct GLFWwindow* m_pWindow;

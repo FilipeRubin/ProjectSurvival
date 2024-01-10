@@ -48,7 +48,7 @@ void OGLRenderer::RenderFrame()
 	glfwPollEvents();
 }
 
-void OGLRenderer::Cleanup()
+void OGLRenderer::Terminate()
 {
 	glfwDestroyWindow(m_pWindow);
 	glfwTerminate();

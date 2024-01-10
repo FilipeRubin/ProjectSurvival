@@ -1,11 +1,9 @@
 #pragma once
 #include "Utility/ContiguousArray.h"
 #include "Renderer/IMesh.h"
-#include "Renderer/IShader.h"
 
-class RenderingList
+class RenderingListBase
 {
-private:
-	IShader m_shader;
+protected:
 	ContiguousArray<IMesh> m_meshes;
 };

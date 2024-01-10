@@ -21,28 +21,31 @@
     <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\OpenGL\OGLRenderer.cpp">
+    <ClCompile Include="src\Rendering\OpenGL\OGLRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\Data\MeshData.cpp">
+    <ClCompile Include="src\Rendering\Common\Data\MeshData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\OpenGL\OGLMesh.cpp">
+    <ClCompile Include="src\Rendering\OpenGL\OGLMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\OpenGL\Specific\OGLVertexBuffer.cpp">
+    <ClCompile Include="src\Rendering\OpenGL\Specific\OGLVertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Utility\DataArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\Data\RenderingList.cpp">
+    <ClCompile Include="src\Rendering\Common\Data\RenderingList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\OpenGL\OGLShader.cpp">
+    <ClCompile Include="src\Rendering\OpenGL\OGLShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rendering\OpenGL\OGLWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,16 +53,16 @@
     <ClInclude Include="src\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\IRenderer.h">
+    <ClInclude Include="src\Rendering\Common\IRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\OpenGL\OGLRenderer.h">
+    <ClInclude Include="src\Rendering\OpenGL\OGLRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\IMesh.h">
+    <ClInclude Include="src\Rendering\Common\IMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\Data\MeshData.h">
+    <ClInclude Include="src\Rendering\Common\Data\MeshData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utility\ContiguousArray.h">
@@ -74,22 +77,28 @@
     <ClInclude Include="src\Utility\Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\OpenGL\OGLMesh.h">
+    <ClInclude Include="src\Rendering\OpenGL\OGLMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\OpenGL\Specific\OGLVertexBuffer.h">
+    <ClInclude Include="src\Rendering\OpenGL\Specific\OGLVertexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utility\DataArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\Data\RenderingList.h">
+    <ClInclude Include="src\Rendering\Common\Data\RenderingList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\IShader.h">
+    <ClInclude Include="src\Rendering\OpenGL\OGLShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\OpenGL\OGLShader.h">
+    <ClInclude Include="src\Rendering\Common\IWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rendering\OpenGL\OGLWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rendering\Common\WindowParameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
