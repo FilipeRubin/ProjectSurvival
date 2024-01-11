@@ -1,6 +1,4 @@
 #include "Game.h"
-#include <GLFW/glfw3.h>
-#include <Renderer/OpenGL/OGLShader.h>
 
 Game::Game(std::unique_ptr<IRenderer>&& renderer) :
 	m_renderer(std::move(renderer))
@@ -15,13 +13,12 @@ void Game::Run()
 
 	if (renderer.IsInitialized())
 	{
-		while (renderer.IsRunning())
+		IWindow& window = m_renderer->GetWindow();
+		while (not window.ShouldClose())
 		{
-			
-
 			renderer.RenderFrame();
 		}
 	}
 	
-	renderer.Cleanup();
+	renderer.Terminate();
 }

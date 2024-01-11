@@ -48,6 +48,9 @@
     <ClCompile Include="src\Rendering\OpenGL\OGLWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Utility\Dimensions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">
@@ -98,7 +101,13 @@
     <ClInclude Include="src\Rendering\OpenGL\OGLWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rendering\Common\WindowParameters.h">
+    <ClInclude Include="src\Utility\Dimensions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rendering\OpenGL\OGLWindowParameters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rendering\Common\IGraphicsApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
-#include "Renderer/IRenderer.h"
-#include "Utility/ContiguousArray.h"
+#include "Rendering/Common/IRenderer.h"
+#include <memory>
 
 class Game
 {

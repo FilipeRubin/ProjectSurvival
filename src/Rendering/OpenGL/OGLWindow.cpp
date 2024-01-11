@@ -1,33 +1,34 @@
 #include "OGLWindow.h"
 #include <GLFW/glfw3.h>
 
-OGLWindow::OGLWindow() :
+OGLWindow::OGLWindow(OGLWindowParameters parameters = OGLWindowParameters()) :
 	m_pWindow(nullptr),
-	m_windowWidth(0),
-	m_windowHeight(0)
+	m_parameters(parameters)
 {
 }
 
-Vector2 OGLWindow::GetWindowSize()
+Dimensions OGLWindow::GetWindowSize()
 {
-	float width = static_cast<float>(m_windowWidth);
-	float height = static_cast<float>(m_windowHeight);
-	return Vector2(width, height);
+	return m_parameters.windowSize;
 }
 
 std::string OGLWindow::GetWindowTitle()
 {
-	return m_windowTitle;
+	return m_parameters.windowTitle;
 }
 
 void OGLWindow::Initialize()
 {
-	m_pWindow = glfwCreateWindow(m_windowWidth, m_windowHeight, m_windowTitle.c_str(), nullptr, nullptr);
+	const int width = m_parameters.windowSize.width;
+	const int height = m_parameters.windowSize.height;
+	const char* title = m_parameters.windowTitle.c_str();
+
+	m_pWindow = glfwCreateWindow(width, height, title, nullptr, nullptr);
 }
 
 bool OGLWindow::IsFullscreen()
 {
-	return false;
+	return m_parameters.isFullscreen;
 }
 
 bool OGLWindow::IsInitialized()
@@ -40,16 +41,15 @@ void OGLWindow::SetFullscreen(bool value)
 	// Not implemented
 }
 
-void OGLWindow::SetWindowSize(const Vector2& size)
+void OGLWindow::SetWindowSize(const Dimensions& size)
 {
-	int width = static_cast<int>(size.x);
-	int height = static_cast<int>(size.y);
+	const int width = size.width;
+	const int height = size.height;
 	glfwSetWindowSize(m_pWindow, width, height);
-	m_windowWidth = width;
-	m_windowHeight = height;
+	m_parameters.windowSize = size;
 }
 
-void OGLWindow::SetWindowTitle(std::string& title)
+void OGLWindow::SetWindowTitle(const std::string& title)
 {
 	glfwSetWindowTitle(m_pWindow, title.c_str());
 }

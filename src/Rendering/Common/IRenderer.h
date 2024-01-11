@@ -1,6 +1,5 @@
 #pragma once
-#include <memory>
-#include "IMesh.h"
+#include "IWindow.h"
 
 class IRenderer
 {
@@ -8,8 +7,7 @@ public:
 	virtual ~IRenderer() = default;
 	virtual void Initialize() = 0;
 	virtual bool IsInitialized() = 0;
-	virtual bool IsRunning() = 0;
 	virtual void RenderFrame() = 0;
 	virtual void Terminate() = 0;
-	virtual std::unique_ptr<IMesh> CreateMesh() = 0;
+	virtual IWindow& GetWindow() = 0;
 };
