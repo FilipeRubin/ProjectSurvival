@@ -33,9 +33,14 @@ DataArray::~DataArray()
 
 DataArray& DataArray::operator=(const DataArray& other)
 {
-	delete[] m_data;
-	std::copy(other.m_data, other.m_data + other.m_size, m_data);
-	m_size = other.m_size;
+	if (this != &other)
+	{
+		delete[] m_data;
+		m_data = new byte[other.m_size];
+		std::copy(other.m_data, other.m_data + other.m_size, m_data);
+		m_size = other.m_size;
+	}
+	return *this;
 }
 
 DataArray& DataArray::operator=(DataArray&& other) noexcept

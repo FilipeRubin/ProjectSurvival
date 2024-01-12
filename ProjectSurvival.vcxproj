@@ -164,11 +164,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Game\Survival\SurvivalGameLogic.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Rendering\Common\Data\MeshData.cpp" />
-    <ClCompile Include="src\Rendering\Common\Data\RenderingList.cpp" />
-    <ClCompile Include="src\Rendering\OpenGL\OGLMesh.cpp" />
+    <ClCompile Include="src\Rendering\Common\Data\RenderingListBase.cpp" />
     <ClCompile Include="src\Rendering\OpenGL\OGLRenderer.cpp" />
     <ClCompile Include="src\Rendering\OpenGL\OGLShader.cpp" />
     <ClCompile Include="src\Rendering\OpenGL\OGLWindow.cpp" />
@@ -178,13 +178,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Game\Common\IGameLogic.h" />
+    <ClInclude Include="src\Game\Survival\SurvivalGameLogic.h" />
     <ClInclude Include="src\Rendering\Common\Data\MeshData.h" />
-    <ClInclude Include="src\Rendering\Common\Data\RenderingList.h" />
-    <ClInclude Include="src\Rendering\Common\IGraphicsApplication.h" />
+    <ClInclude Include="src\Rendering\Common\Data\RenderingListBase.h" />
     <ClInclude Include="src\Rendering\Common\IMesh.h" />
     <ClInclude Include="src\Rendering\Common\IRenderer.h" />
     <ClInclude Include="src\Rendering\Common\IWindow.h" />
-    <ClInclude Include="src\Rendering\OpenGL\OGLMesh.h" />
     <ClInclude Include="src\Rendering\OpenGL\OGLRenderer.h" />
     <ClInclude Include="src\Rendering\OpenGL\OGLShader.h" />
     <ClInclude Include="src\Rendering\OpenGL\OGLWindow.h" />

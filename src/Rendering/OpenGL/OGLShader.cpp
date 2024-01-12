@@ -19,7 +19,11 @@ OGLShader::~OGLShader()
 
 OGLShader& OGLShader::operator=(OGLShader&& other) noexcept
 {
-	// TODO: insert return statement here
+	if (this != &other)
+	{
+
+	}
+	return *this;
 }
 
 void OGLShader::Compile()

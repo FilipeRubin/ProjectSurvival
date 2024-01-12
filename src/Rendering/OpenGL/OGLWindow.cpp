@@ -1,10 +1,21 @@
 #include "OGLWindow.h"
 #include <GLFW/glfw3.h>
 
-OGLWindow::OGLWindow(OGLWindowParameters parameters = OGLWindowParameters()) :
+OGLWindow::OGLWindow() :
+	m_pWindow(nullptr),
+	m_parameters(OGLWindowParameters())
+{
+}
+
+OGLWindow::OGLWindow(OGLWindowParameters parameters) :
 	m_pWindow(nullptr),
 	m_parameters(parameters)
 {
+}
+
+void OGLWindow::Close()
+{
+	glfwSetWindowShouldClose(m_pWindow, GLFW_TRUE);
 }
 
 Dimensions OGLWindow::GetWindowSize()
@@ -19,11 +30,17 @@ std::string OGLWindow::GetWindowTitle()
 
 void OGLWindow::Initialize()
 {
+	if (glfwInit() != GLFW_TRUE)
+	{
+		return;
+	}
+	
 	const int width = m_parameters.windowSize.width;
 	const int height = m_parameters.windowSize.height;
 	const char* title = m_parameters.windowTitle.c_str();
 
 	m_pWindow = glfwCreateWindow(width, height, title, nullptr, nullptr);
+	glfwMakeContextCurrent(m_pWindow);
 }
 
 bool OGLWindow::IsFullscreen()
@@ -59,7 +76,14 @@ bool OGLWindow::ShouldClose()
 	return glfwWindowShouldClose(m_pWindow);
 }
 
+void OGLWindow::Process()
+{
+	glfwSwapBuffers(m_pWindow);
+	glfwPollEvents();
+}
+
 void OGLWindow::Terminate()
 {
 	glfwDestroyWindow(m_pWindow);
+	glfwTerminate();
 }

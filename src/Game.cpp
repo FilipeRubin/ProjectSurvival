@@ -1,24 +1,72 @@
 #include "Game.h"
 
-Game::Game(std::unique_ptr<IRenderer>&& renderer) :
-	m_renderer(std::move(renderer))
+Game* Game::s_pCurrentGame = nullptr;
+
+Game::Game(std::unique_ptr<IRenderer>&& renderer, std::unique_ptr<IWindow>&& window, std::unique_ptr<IGameLogic>&& gameLogic) :
+	m_renderer(std::move(renderer)),
+	m_window(std::move(window)),
+	m_gameLogic(std::move(gameLogic))
 {
+}
+
+IRenderer& Game::GetRenderer()
+{
+	return *m_renderer;
+}
+
+IWindow& Game::GetWindow()
+{
+	return *m_window;
+}
+
+IGameLogic& Game::GetGameLogic()
+{
+	return *m_gameLogic;
 }
 
 void Game::Run()
 {
-	IRenderer& renderer = *m_renderer;
+	Initialize();
+	RunGameLoop();
+	Terminate();
+}
 
-	renderer.Initialize();
+Game* Game::GetCurrentGame()
+{
+	return s_pCurrentGame;
+}
 
-	if (renderer.IsInitialized())
+void Game::SetCurrentGame(Game* pGame)
+{
+	s_pCurrentGame = pGame;
+}
+
+void Game::Initialize()
+{
+	m_window->Initialize();
+	m_renderer->Initialize();
+
+	bool everythingOkay = m_renderer->IsInitialized() and m_window->IsInitialized();
+
+	if (not everythingOkay)
 	{
-		IWindow& window = m_renderer->GetWindow();
-		while (not window.ShouldClose())
-		{
-			renderer.RenderFrame();
-		}
+		Terminate();
 	}
-	
-	renderer.Terminate();
+}
+
+void Game::RunGameLoop()
+{
+	m_gameLogic->Initialize();
+	while (not m_window->ShouldClose())
+	{
+		m_gameLogic->Process();
+		m_renderer->RenderFrame();
+		m_window->Process();
+	}
+}
+
+void Game::Terminate()
+{
+	m_renderer->Terminate();
+	m_window->Terminate();
 }

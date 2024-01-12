@@ -12,6 +12,7 @@ public:
 	virtual void Initialize() = 0;
 	virtual bool IsFullscreen() = 0;
 	virtual bool IsInitialized() = 0;
+	virtual void Process() = 0;
 	virtual void SetFullscreen(bool value) = 0;
 	virtual void SetWindowSize(const Dimensions& size) = 0;
 	virtual void SetWindowTitle(const std::string& title) = 0;

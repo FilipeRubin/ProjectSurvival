@@ -5,12 +5,15 @@
 class OGLWindow : public IWindow
 {
 public:
-	OGLWindow(OGLWindowParameters parameters = OGLWindowParameters());
+	OGLWindow();
+	OGLWindow(OGLWindowParameters parameters);
+	void Close() override;
 	Dimensions GetWindowSize() override;
 	std::string GetWindowTitle() override;
 	void Initialize() override;
 	bool IsFullscreen() override;
 	bool IsInitialized() override;
+	void Process() override;
 	void SetFullscreen(bool value) override;
 	void SetWindowSize(const Dimensions& size) override;
 	void SetWindowTitle(const std::string& title) override;

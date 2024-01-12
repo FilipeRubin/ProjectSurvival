@@ -18,10 +18,14 @@ public:
 	}
 
 	ContiguousArray(const std::initializer_list<T>& elements) :
-		m_array(new T[elements.size()]),
+		m_array(nullptr),
 		m_length(elements.size())
 	{
-		std::copy(elements.begin(), elements.end(), m_array);
+		if (elements.size() != 0U)
+		{
+			m_array = new T[elements.size()];
+			std::copy(elements.begin(), elements.end(), m_array);
+		}
 	}
 
 	ContiguousArray(const ContiguousArray<T>& other) :
