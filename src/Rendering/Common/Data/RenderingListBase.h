@@ -6,7 +6,6 @@
 class RenderingListBase
 {
 public:
+	ContiguousArray<std::unique_ptr<IRenderable>> renderables;
 	virtual void Render() = 0;
-protected:
-	ContiguousArray<std::unique_ptr<IRenderable>> m_meshes;
 };

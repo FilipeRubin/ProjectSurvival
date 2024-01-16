@@ -10,8 +10,8 @@ public:
 	static void SetCurrentGame(Game* pGame);
 
 	Game(std::unique_ptr<IGraphics>&& graphics, std::unique_ptr<IGameLogic>&& gameLogic);
-	IGraphics& GetGraphics();
 	IGameLogic& GetGameLogic();
+	IGraphics& GetGraphics();
 	void Run();
 private:
 	static Game* s_pCurrentGame;

@@ -169,9 +169,11 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Rendering\Common\Data\MeshData.cpp" />
     <ClCompile Include="src\Rendering\Common\Data\RenderingListBase.cpp" />
+    <ClCompile Include="src\Rendering\OpenGL\Data\OGLRenderingList.cpp" />
     <ClCompile Include="src\Rendering\OpenGL\OGLGraphics.cpp" />
     <ClCompile Include="src\Rendering\OpenGL\OGLRenderer.cpp" />
     <ClCompile Include="src\Rendering\OpenGL\OGLWindow.cpp" />
+    <ClCompile Include="src\Utility\Color.cpp" />
     <ClCompile Include="src\Utility\DataArray.cpp" />
     <ClCompile Include="src\Utility\Dimensions.cpp" />
     <ClCompile Include="src\Utility\Transform.cpp" />
@@ -187,10 +189,12 @@
     <ClInclude Include="src\Rendering\Common\Data\MeshBase.h" />
     <ClInclude Include="src\Rendering\Common\IRenderer.h" />
     <ClInclude Include="src\Rendering\Common\IWindow.h" />
+    <ClInclude Include="src\Rendering\OpenGL\Data\OGLRenderingList.h" />
     <ClInclude Include="src\Rendering\OpenGL\OGLRenderer.h" />
     <ClInclude Include="src\Rendering\OpenGL\OGLWindow.h" />
     <ClInclude Include="src\Rendering\OpenGL\Data\OGLWindowParameters.h" />
     <ClInclude Include="src\Rendering\OpenGL\OGLGraphics.h" />
+    <ClInclude Include="src\Utility\Color.h" />
     <ClInclude Include="src\Utility\ContiguousArray.h" />
     <ClInclude Include="src\Utility\DataArray.h" />
     <ClInclude Include="src\Utility\Dimensions.h" />

@@ -8,14 +8,14 @@ Game::Game(std::unique_ptr<IGraphics>&& graphics, std::unique_ptr<IGameLogic>&& 
 {
 }
 
-IGraphics& Game::GetGraphics()
-{
-	return *m_graphics;
-}
-
 IGameLogic& Game::GetGameLogic()
 {
 	return *m_gameLogic;
+}
+
+IGraphics& Game::GetGraphics()
+{
+	return *m_graphics;
 }
 
 void Game::Run()
