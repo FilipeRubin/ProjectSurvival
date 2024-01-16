@@ -11,7 +11,7 @@ public:
 	void Terminate() override;
 
 	// TEMPORARY
-	void SetBackgroundColor(const Vector3& color) override;
+	void SetBackgroundColor(const Color& color) override;
 private:
 	bool m_isInitialized;
 };

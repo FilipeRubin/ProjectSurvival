@@ -1,6 +1,6 @@
 #pragma once
 #include "IWindow.h"
-#include "Utility/Vector3.h"
+#include "Utility/Color.h"
 
 class IRenderer
 {
@@ -12,5 +12,5 @@ public:
 	virtual void Terminate() = 0;
 
 	// TEMPORARY
-	virtual void SetBackgroundColor(const Vector3& color) = 0;
+	virtual void SetBackgroundColor(const Color& color) = 0;
 };
