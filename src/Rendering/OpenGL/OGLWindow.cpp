@@ -3,7 +3,8 @@
 
 OGLWindow::OGLWindow() :
 	m_pWindow(nullptr),
-	m_parameters(OGLWindowParameters())
+	m_parameters(OGLWindowParameters()),
+	m_isInitialized(false)
 {
 }
 
@@ -35,12 +36,21 @@ void OGLWindow::Initialize()
 		return;
 	}
 	
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
 	const int width = m_parameters.windowSize.width;
 	const int height = m_parameters.windowSize.height;
 	const char* title = m_parameters.windowTitle.c_str();
 
 	m_pWindow = glfwCreateWindow(width, height, title, nullptr, nullptr);
+	if (m_pWindow == nullptr)
+	{
+		Terminate();
+		return;
+	}
 	glfwMakeContextCurrent(m_pWindow);
+	m_isInitialized = true;
 }
 
 bool OGLWindow::IsFullscreen()
@@ -50,7 +60,7 @@ bool OGLWindow::IsFullscreen()
 
 bool OGLWindow::IsInitialized()
 {
-	return m_pWindow != nullptr;
+	return m_isInitialized;
 }
 
 void OGLWindow::SetFullscreen(bool value)

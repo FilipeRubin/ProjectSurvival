@@ -2,21 +2,15 @@
 
 Game* Game::s_pCurrentGame = nullptr;
 
-Game::Game(std::unique_ptr<IRenderer>&& renderer, std::unique_ptr<IWindow>&& window, std::unique_ptr<IGameLogic>&& gameLogic) :
-	m_renderer(std::move(renderer)),
-	m_window(std::move(window)),
+Game::Game(std::unique_ptr<IGraphics>&& graphics, std::unique_ptr<IGameLogic>&& gameLogic) :
+	m_graphics(std::move(graphics)),
 	m_gameLogic(std::move(gameLogic))
 {
 }
 
-IRenderer& Game::GetRenderer()
+IGraphics& Game::GetGraphics()
 {
-	return *m_renderer;
-}
-
-IWindow& Game::GetWindow()
-{
-	return *m_window;
+	return *m_graphics;
 }
 
 IGameLogic& Game::GetGameLogic()
@@ -43,10 +37,13 @@ void Game::SetCurrentGame(Game* pGame)
 
 void Game::Initialize()
 {
-	m_window->Initialize();
-	m_renderer->Initialize();
+	IWindow& window = *(m_graphics->GetWindow());
+	IRenderer& renderer = *(m_graphics->GetRenderer());
 
-	bool everythingOkay = m_renderer->IsInitialized() and m_window->IsInitialized();
+	window.Initialize();
+	renderer.Initialize();
+
+	bool everythingOkay = renderer.IsInitialized() and window.IsInitialized();
 
 	if (not everythingOkay)
 	{
@@ -56,17 +53,24 @@ void Game::Initialize()
 
 void Game::RunGameLoop()
 {
-	m_gameLogic->Initialize();
-	while (not m_window->ShouldClose())
+	IWindow& window = *(m_graphics->GetWindow());
+	IRenderer& renderer = *(m_graphics->GetRenderer());
+	IGameLogic& gameLogic = *m_gameLogic;
+
+	gameLogic.Initialize();
+	while (not window.ShouldClose())
 	{
-		m_gameLogic->Process();
-		m_renderer->RenderFrame();
-		m_window->Process();
+		gameLogic.Process();
+		renderer.RenderFrame();
+		window.Process();
 	}
 }
 
 void Game::Terminate()
 {
-	m_renderer->Terminate();
-	m_window->Terminate();
+	IWindow& window = *(m_graphics->GetWindow());
+	IRenderer& renderer = *(m_graphics->GetRenderer());
+
+	renderer.Terminate();
+	window.Terminate();
 }

@@ -9,4 +9,5 @@ public:
 	void Process() override;
 private:
 	bool m_evenFrame = false;
+
 };

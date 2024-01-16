@@ -7,13 +7,13 @@ template<typename T>
 class ContiguousArray
 {
 public:
-	ContiguousArray(size_t size = 0U) :
+	ContiguousArray(size_t length = 0U) :
 		m_array(nullptr),
-		m_length(size)
+		m_length(length)
 	{
-		if (size != 0U)
+		if (length != 0U)
 		{
-			m_array = new T[size];
+			m_array = new T[length];
 		}
 	}
 
@@ -138,6 +138,27 @@ public:
 		delete[] m_array;
 		m_array = newArray;
 		m_length--;
+	}
+
+	void Resize(size_t length)
+	{
+		if (length == m_length)
+			return;
+
+		T* newArray = new T[length];
+
+		if (length < m_length)
+		{
+			std::copy(m_array, m_array + length, newArray);
+		}
+		else
+		{
+			std::copy(m_array, m_array + m_length, newArray);
+		}
+
+		delete[] m_array;
+		m_array = newArray;
+		m_length = length;
 	}
 
 	size_t Length() const

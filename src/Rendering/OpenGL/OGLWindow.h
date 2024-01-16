@@ -1,6 +1,6 @@
 #pragma once
 #include "Rendering/Common/IWindow.h"
-#include "OGLWindowParameters.h"
+#include "Data/OGLWindowParameters.h"
 
 class OGLWindow : public IWindow
 {
@@ -22,4 +22,5 @@ public:
 private:
 	struct GLFWwindow* m_pWindow;
 	OGLWindowParameters m_parameters;
+	bool m_isInitialized;
 };

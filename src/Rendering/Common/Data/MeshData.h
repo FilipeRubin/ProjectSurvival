@@ -4,6 +4,7 @@
 
 class MeshData
 {
-private:
-	ContiguousArray<Vertex> m_vertices;
+public:
+	ContiguousArray<Vertex> vertices;
+	ContiguousArray<unsigned int> indices;
 };

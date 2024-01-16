@@ -1,11 +1,12 @@
 #pragma once
+#include "Rendering/Common/Data/IRenderable.h"
 #include "Utility/ContiguousArray.h"
-#include "Rendering/Common/IMesh.h"
+#include <memory>
 
 class RenderingListBase
 {
 public:
-	virtual void DrawAll() = 0;
+	virtual void Render() = 0;
 protected:
-	ContiguousArray<IMesh> m_meshes;
+	ContiguousArray<std::unique_ptr<IRenderable>> m_meshes;
 };
