@@ -9,9 +9,7 @@ public:
 	bool IsInitialized() override;
 	void RenderFrame() override;
 	void Terminate() override;
-
-	// TEMPORARY
-	void SetBackgroundColor(const Color& color) override;
+	void SetClearColor(const Color& color) override;
 private:
 	bool m_isInitialized;
 };

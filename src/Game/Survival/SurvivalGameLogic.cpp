@@ -12,14 +12,14 @@ void SurvivalGameLogic::Initialize()
 
 void SurvivalGameLogic::Process()
 {
-	IRenderer& renderer = Game::GetCurrentGame()->GetRenderer();
+	IRendererManipulator& renderer = Game::GetCurrentGraphicsManipulator()->GetRendererManipulator();
 	if (m_evenFrame)
 	{
-		renderer.SetBackgroundColor(Vector3(0.1f, 0.1f, 0.1f));
+		renderer.SetClearColor(Color(0.1f, 0.1f, 0.1f));
 	}
 	else
 	{
-		renderer.SetBackgroundColor(Vector3(0.0f, 0.0f, 0.0f));
+		renderer.SetClearColor(Color(0.0f, 0.0f, 0.0f));
 	}
 	m_evenFrame = !m_evenFrame;
 }

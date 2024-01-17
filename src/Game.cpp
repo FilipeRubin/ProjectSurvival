@@ -1,21 +1,11 @@
 #include "Game.h"
 
-Game* Game::s_pCurrentGame = nullptr;
+Game* Game::s_pGame = nullptr;
 
 Game::Game(std::unique_ptr<IGraphics>&& graphics, std::unique_ptr<IGameLogic>&& gameLogic) :
 	m_graphics(std::move(graphics)),
 	m_gameLogic(std::move(gameLogic))
 {
-}
-
-IGameLogic& Game::GetGameLogic()
-{
-	return *m_gameLogic;
-}
-
-IGraphics& Game::GetGraphics()
-{
-	return *m_graphics;
 }
 
 void Game::Run()
@@ -25,20 +15,20 @@ void Game::Run()
 	Terminate();
 }
 
-Game* Game::GetCurrentGame()
+IGraphicsManipulator* Game::GetCurrentGraphicsManipulator()
 {
-	return s_pCurrentGame;
+	return s_pGame->m_graphics.get();
 }
 
 void Game::SetCurrentGame(Game* pGame)
 {
-	s_pCurrentGame = pGame;
+	s_pGame = pGame;
 }
 
 void Game::Initialize()
 {
-	IWindow& window = *(m_graphics->GetWindow());
-	IRenderer& renderer = *(m_graphics->GetRenderer());
+	IWindowProcessor& window = m_graphics->GetWindowProcessor();
+	IRendererProcessor& renderer = m_graphics->GetRendererProcessor();
 
 	window.Initialize();
 	renderer.Initialize();
@@ -53,8 +43,8 @@ void Game::Initialize()
 
 void Game::RunGameLoop()
 {
-	IWindow& window = *(m_graphics->GetWindow());
-	IRenderer& renderer = *(m_graphics->GetRenderer());
+	IWindowProcessor& window = m_graphics->GetWindowProcessor();
+	IRendererProcessor& renderer = m_graphics->GetRendererProcessor();
 	IGameLogic& gameLogic = *m_gameLogic;
 
 	gameLogic.Initialize();
@@ -68,8 +58,8 @@ void Game::RunGameLoop()
 
 void Game::Terminate()
 {
-	IWindow& window = *(m_graphics->GetWindow());
-	IRenderer& renderer = *(m_graphics->GetRenderer());
+	IWindowProcessor& window = m_graphics->GetWindowProcessor();
+	IRendererProcessor& renderer = m_graphics->GetRendererProcessor();
 
 	renderer.Terminate();
 	window.Terminate();

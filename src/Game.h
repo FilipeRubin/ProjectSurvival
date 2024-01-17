@@ -6,15 +6,13 @@
 class Game
 {
 public:
-	static Game* GetCurrentGame();
+	static IGraphicsManipulator* GetCurrentGraphicsManipulator();
 	static void SetCurrentGame(Game* pGame);
 
 	Game(std::unique_ptr<IGraphics>&& graphics, std::unique_ptr<IGameLogic>&& gameLogic);
-	IGameLogic& GetGameLogic();
-	IGraphics& GetGraphics();
 	void Run();
 private:
-	static Game* s_pCurrentGame;
+	static Game* s_pGame;
 
 	std::unique_ptr<IGraphics> m_graphics;
 	std::unique_ptr<IGameLogic> m_gameLogic;

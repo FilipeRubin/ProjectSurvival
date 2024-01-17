@@ -6,8 +6,10 @@
 class OGLGraphics : public IGraphics
 {
 public:
-	IRenderer* GetRenderer() override;
-	IWindow* GetWindow() override;
+	IRendererManipulator& GetRendererManipulator() override;
+	IWindowManipulator& GetWindowManipulator() override;
+	IRendererProcessor& GetRendererProcessor() override;
+	IWindowProcessor& GetWindowProcessor() override;
 private:
 	OGLRenderer m_renderer;
 	OGLWindow m_window;

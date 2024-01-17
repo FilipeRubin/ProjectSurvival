@@ -14,6 +14,7 @@ int main()
 	Game game = Game(move(graphics), move(gameLogic));
 	Game::SetCurrentGame(&game);
 	game.Run();
+	Game::SetCurrentGame(nullptr);
 
 	return 0;
 }

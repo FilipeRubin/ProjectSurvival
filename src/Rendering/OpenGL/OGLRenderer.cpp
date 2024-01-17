@@ -28,7 +28,7 @@ void OGLRenderer::Terminate()
 {
 }
 
-void OGLRenderer::SetBackgroundColor(const Color& color)
+void OGLRenderer::SetClearColor(const Color& color)
 {
 	glClearColor(color.r, color.g, color.b, color.a);
 }

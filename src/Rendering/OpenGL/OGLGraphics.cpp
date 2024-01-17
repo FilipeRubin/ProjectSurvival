@@ -1,11 +1,21 @@
 #include "OGLGraphics.h"
 
-IRenderer* OGLGraphics::GetRenderer()
+IRendererManipulator& OGLGraphics::GetRendererManipulator()
 {
-	return &m_renderer;
+	return m_renderer;
 }
 
-IWindow* OGLGraphics::GetWindow()
+IWindowManipulator& OGLGraphics::GetWindowManipulator()
 {
-	return &m_window;
+	return m_window;
+}
+
+IRendererProcessor& OGLGraphics::GetRendererProcessor()
+{
+	return m_renderer;
+}
+
+IWindowProcessor& OGLGraphics::GetWindowProcessor()
+{
+	return m_window;
 }
