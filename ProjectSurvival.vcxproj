@@ -164,49 +164,51 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Game\Survival\SurvivalGameLogic.cpp" />
+    <ClCompile Include="src\Gameplay\Survival\SurvivalGameLogic.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Rendering\Common\Data\MeshData.cpp" />
-    <ClCompile Include="src\Rendering\Common\Data\RenderingListBase.cpp" />
-    <ClCompile Include="src\Rendering\OpenGL\Data\OGLRenderingList.cpp" />
-    <ClCompile Include="src\Rendering\OpenGL\OGLGraphics.cpp" />
-    <ClCompile Include="src\Rendering\OpenGL\OGLRenderer.cpp" />
-    <ClCompile Include="src\Rendering\OpenGL\OGLWindow.cpp" />
+    <ClCompile Include="src\Rendering\OpenGL\OpenGLGraphics.cpp" />
+    <ClCompile Include="src\Rendering\OpenGL\OpenGLRenderer.cpp" />
+    <ClCompile Include="src\Rendering\OpenGL\OpenGLViewport.cpp" />
+    <ClCompile Include="src\Rendering\OpenGL\OpenGLWindow.cpp" />
     <ClCompile Include="src\Utility\Color.cpp" />
     <ClCompile Include="src\Utility\DataArray.cpp" />
     <ClCompile Include="src\Utility\Dimensions.cpp" />
+    <ClCompile Include="src\Utility\Matrix4x4.cpp" />
     <ClCompile Include="src\Utility\Transform.cpp" />
+    <ClCompile Include="src\Utility\Vector2.cpp" />
+    <ClCompile Include="src\Utility\Vector3.cpp" />
+    <ClCompile Include="src\Utility\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Game\Common\IGameLogic.h" />
-    <ClInclude Include="src\Game\Survival\SurvivalGameLogic.h" />
-    <ClInclude Include="src\Rendering\Common\Data\IRenderable.h" />
+    <ClInclude Include="src\Gameplay\Common\IGameLogic.h" />
+    <ClInclude Include="src\Gameplay\Survival\SurvivalGameLogic.h" />
     <ClInclude Include="src\Rendering\Common\Data\MeshData.h" />
-    <ClInclude Include="src\Rendering\Common\Data\RenderingListBase.h" />
     <ClInclude Include="src\Rendering\Common\IGraphics.h" />
-    <ClInclude Include="src\Rendering\Common\Data\MeshBase.h" />
     <ClInclude Include="src\Rendering\Common\IGraphicsManipulator.h" />
     <ClInclude Include="src\Rendering\Common\IGraphicsProcessor.h" />
     <ClInclude Include="src\Rendering\Common\IRenderer.h" />
     <ClInclude Include="src\Rendering\Common\IRendererManipulator.h" />
     <ClInclude Include="src\Rendering\Common\IRendererProcessor.h" />
+    <ClInclude Include="src\Rendering\Common\IViewport.h" />
     <ClInclude Include="src\Rendering\Common\IWindow.h" />
     <ClInclude Include="src\Rendering\Common\IWindowManipulator.h" />
     <ClInclude Include="src\Rendering\Common\IWindowProcessor.h" />
-    <ClInclude Include="src\Rendering\OpenGL\Data\OGLRenderingList.h" />
-    <ClInclude Include="src\Rendering\OpenGL\OGLRenderer.h" />
-    <ClInclude Include="src\Rendering\OpenGL\OGLWindow.h" />
-    <ClInclude Include="src\Rendering\OpenGL\Data\OGLWindowParameters.h" />
-    <ClInclude Include="src\Rendering\OpenGL\OGLGraphics.h" />
+    <ClInclude Include="src\Rendering\OpenGL\OpenGLRenderer.h" />
+    <ClInclude Include="src\Rendering\OpenGL\OpenGLViewport.h" />
+    <ClInclude Include="src\Rendering\OpenGL\OpenGLWindow.h" />
+    <ClInclude Include="src\Rendering\OpenGL\OpenGLGraphics.h" />
     <ClInclude Include="src\Utility\Color.h" />
     <ClInclude Include="src\Utility\ContiguousArray.h" />
     <ClInclude Include="src\Utility\DataArray.h" />
     <ClInclude Include="src\Utility\Dimensions.h" />
+    <ClInclude Include="src\Utility\Matrix4x4.h" />
     <ClInclude Include="src\Utility\Transform.h" />
     <ClInclude Include="src\Utility\Vector2.h" />
     <ClInclude Include="src\Utility\Vector3.h" />
+    <ClInclude Include="src\Utility\Vector4.h" />
     <ClInclude Include="src\Utility\Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

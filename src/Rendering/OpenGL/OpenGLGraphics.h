@@ -1,9 +1,9 @@
 #pragma once
 #include "Rendering/Common/IGraphics.h"
-#include "OGLRenderer.h"
-#include "OGLWindow.h"
+#include "OpenGLRenderer.h"
+#include "OpenGLWindow.h"
 
-class OGLGraphics : public IGraphics
+class OpenGLGraphics : public IGraphics
 {
 public:
 	IRendererManipulator& GetRendererManipulator() override;
@@ -11,6 +11,6 @@ public:
 	IRendererProcessor& GetRendererProcessor() override;
 	IWindowProcessor& GetWindowProcessor() override;
 private:
-	OGLRenderer m_renderer;
-	OGLWindow m_window;
+	OpenGLRenderer m_renderer;
+	OpenGLWindow m_window;
 };

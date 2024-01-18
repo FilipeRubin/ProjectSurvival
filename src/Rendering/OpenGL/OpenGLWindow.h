@@ -1,12 +1,18 @@
 #pragma once
 #include "Rendering/Common/IWindow.h"
-#include "Data/OGLWindowParameters.h"
 
-class OGLWindow : public IWindow
+struct OpenGLWindowParameters
+{
+	std::string windowTitle = "Project Survival";
+	Dimensions windowSize = Dimensions(800, 600);
+	bool isFullscreen = false;
+};
+
+class OpenGLWindow : public IWindow
 {
 public:
-	OGLWindow();
-	OGLWindow(OGLWindowParameters parameters);
+	OpenGLWindow();
+	OpenGLWindow(OpenGLWindowParameters parameters);
 	void Close() override;
 	Dimensions GetWindowSize() override;
 	std::string GetWindowTitle() override;
@@ -21,6 +27,6 @@ public:
 	void Terminate() override;
 private:
 	struct GLFWwindow* m_pWindow;
-	OGLWindowParameters m_parameters;
+	OpenGLWindowParameters m_parameters;
 	bool m_isInitialized;
 };

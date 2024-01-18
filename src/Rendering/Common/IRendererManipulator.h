@@ -1,9 +1,9 @@
 #pragma once
-#include "Utility/Color.h"
+#include "IViewport.h"
 
 class IRendererManipulator
 {
 public:
 	virtual ~IRendererManipulator() = default;
-	virtual void SetClearColor(const Color& color) = 0;
+	virtual IViewport& GetMainViewport() = 0;
 };

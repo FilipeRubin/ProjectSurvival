@@ -1,15 +1,17 @@
 #pragma once
+#include "OpenGLViewport.h"
 #include "Rendering/Common/IRenderer.h"
 
-class OGLRenderer : public IRenderer
+class OpenGLRenderer : public IRenderer
 {
 public:
-	OGLRenderer();
+	OpenGLRenderer();
+	IViewport& GetMainViewport() override;
 	void Initialize() override;
 	bool IsInitialized() override;
 	void RenderFrame() override;
 	void Terminate() override;
-	void SetClearColor(const Color& color) override;
 private:
 	bool m_isInitialized;
+	OpenGLViewport m_mainViewport;
 };

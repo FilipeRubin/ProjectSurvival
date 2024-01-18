@@ -1,5 +1,5 @@
 #pragma once
-#include "Game/Common/IGameLogic.h"
+#include "Gameplay/Common/IGameLogic.h"
 
 class SurvivalGameLogic : public IGameLogic
 {
@@ -9,5 +9,5 @@ public:
 	void Process() override;
 private:
 	bool m_evenFrame = false;
-
+	int m_frameCount = 0;
 };

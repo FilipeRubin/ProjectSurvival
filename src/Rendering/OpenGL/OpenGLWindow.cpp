@@ -1,35 +1,35 @@
-#include "OGLWindow.h"
+#include "OpenGLWindow.h"
 #include <GLFW/glfw3.h>
 
-OGLWindow::OGLWindow() :
+OpenGLWindow::OpenGLWindow() :
 	m_pWindow(nullptr),
-	m_parameters(OGLWindowParameters()),
+	m_parameters(OpenGLWindowParameters()),
 	m_isInitialized(false)
 {
 }
 
-OGLWindow::OGLWindow(OGLWindowParameters parameters) :
+OpenGLWindow::OpenGLWindow(OpenGLWindowParameters parameters) :
 	m_pWindow(nullptr),
 	m_parameters(parameters)
 {
 }
 
-void OGLWindow::Close()
+void OpenGLWindow::Close()
 {
 	glfwSetWindowShouldClose(m_pWindow, GLFW_TRUE);
 }
 
-Dimensions OGLWindow::GetWindowSize()
+Dimensions OpenGLWindow::GetWindowSize()
 {
 	return m_parameters.windowSize;
 }
 
-std::string OGLWindow::GetWindowTitle()
+std::string OpenGLWindow::GetWindowTitle()
 {
 	return m_parameters.windowTitle;
 }
 
-void OGLWindow::Initialize()
+void OpenGLWindow::Initialize()
 {
 	if (glfwInit() != GLFW_TRUE)
 	{
@@ -53,22 +53,22 @@ void OGLWindow::Initialize()
 	m_isInitialized = true;
 }
 
-bool OGLWindow::IsFullscreen()
+bool OpenGLWindow::IsFullscreen()
 {
 	return m_parameters.isFullscreen;
 }
 
-bool OGLWindow::IsInitialized()
+bool OpenGLWindow::IsInitialized()
 {
 	return m_isInitialized;
 }
 
-void OGLWindow::SetFullscreen(bool value)
+void OpenGLWindow::SetFullscreen(bool value)
 {
 	// Not implemented
 }
 
-void OGLWindow::SetWindowSize(const Dimensions& size)
+void OpenGLWindow::SetWindowSize(const Dimensions& size)
 {
 	const int width = size.width;
 	const int height = size.height;
@@ -76,23 +76,23 @@ void OGLWindow::SetWindowSize(const Dimensions& size)
 	m_parameters.windowSize = size;
 }
 
-void OGLWindow::SetWindowTitle(const std::string& title)
+void OpenGLWindow::SetWindowTitle(const std::string& title)
 {
 	glfwSetWindowTitle(m_pWindow, title.c_str());
 }
 
-bool OGLWindow::ShouldClose()
+bool OpenGLWindow::ShouldClose()
 {
 	return glfwWindowShouldClose(m_pWindow);
 }
 
-void OGLWindow::Process()
+void OpenGLWindow::Process()
 {
 	glfwSwapBuffers(m_pWindow);
 	glfwPollEvents();
 }
 
-void OGLWindow::Terminate()
+void OpenGLWindow::Terminate()
 {
 	glfwDestroyWindow(m_pWindow);
 	glfwTerminate();

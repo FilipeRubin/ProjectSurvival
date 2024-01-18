@@ -1,6 +1,7 @@
 #include "Game.h"
-#include "Game/Survival/SurvivalGameLogic.h"
-#include "Rendering/OpenGL/OGLGraphics.h"
+#include "Gameplay/Survival/SurvivalGameLogic.h"
+#include "Rendering/OpenGL/OpenGLGraphics.h"
+#include "Utility/Matrix4x4.h"
 
 int main()
 {
@@ -8,7 +9,7 @@ int main()
 	using std::make_unique;
 	using std::move;
 
-	unique_ptr<IGraphics> graphics = make_unique<OGLGraphics>();
+	unique_ptr<IGraphics> graphics = make_unique<OpenGLGraphics>();
 	unique_ptr<IGameLogic> gameLogic = make_unique<SurvivalGameLogic>();
 
 	Game game = Game(move(graphics), move(gameLogic));

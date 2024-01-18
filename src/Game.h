@@ -1,5 +1,5 @@
 #pragma once
-#include "Game/Common/IGameLogic.h"
+#include "Gameplay/Common/IGameLogic.h"
 #include "Rendering/Common/IGraphics.h"
 #include <memory>
 

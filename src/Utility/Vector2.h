@@ -2,5 +2,11 @@
 
 struct Vector2
 {
-	float x, y;
+	float x;
+	float y;
+
+	Vector2();
+	Vector2(float x, float y);
+
+	float& operator[](int index);
 };
