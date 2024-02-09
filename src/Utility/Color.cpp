@@ -1,4 +1,5 @@
 #include "Color.h"
+#include "Color8.h"
 
 Color::Color() :
 	r(0.0f),
@@ -40,4 +41,15 @@ bool Color::operator!=(const Color& other)
 		g != other.g or
 		b != other.b or
 		a != other.a;
+}
+
+Color::operator Color8()
+{
+	return Color8
+	(
+		static_cast<unsigned char>(r * 255.0f),
+		static_cast<unsigned char>(g * 255.0f),
+		static_cast<unsigned char>(b * 255.0f),
+		static_cast<unsigned char>(a * 255.0f)
+	);
 }

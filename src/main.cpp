@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Gameplay/Survival/SurvivalGameLogic.h"
 #include "Rendering/OpenGL/OpenGLGraphics.h"
-#include "Utility/Matrix4x4.h"
 
 int main()
 {

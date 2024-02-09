@@ -1,16 +1,10 @@
 #include "OpenGLWindow.h"
 #include <GLFW/glfw3.h>
 
-OpenGLWindow::OpenGLWindow() :
+OpenGLWindow::OpenGLWindow(const WindowParameters& parameters) :
 	m_pWindow(nullptr),
-	m_parameters(OpenGLWindowParameters()),
+	m_parameters(parameters),
 	m_isInitialized(false)
-{
-}
-
-OpenGLWindow::OpenGLWindow(OpenGLWindowParameters parameters) :
-	m_pWindow(nullptr),
-	m_parameters(parameters)
 {
 }
 

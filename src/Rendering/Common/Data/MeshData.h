@@ -2,9 +2,8 @@
 #include "Utility/ContiguousArray.h"
 #include "Utility/Vertex.h"
 
-class MeshData
+struct MeshData
 {
-public:
 	ContiguousArray<Vertex> vertices;
 	ContiguousArray<unsigned int> indices;
 };

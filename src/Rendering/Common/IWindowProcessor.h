@@ -1,4 +1,5 @@
 #pragma once
+#include "Parameters/WindowParameters.h"
 
 class IWindowProcessor
 {

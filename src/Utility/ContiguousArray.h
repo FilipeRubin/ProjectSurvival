@@ -115,6 +115,11 @@ public:
 		m_length = 0;
 	}
 
+	T* const GetDataPointer() const
+	{
+		return m_array;
+	}
+
 	bool IsValid() const
 	{
 		return m_array != nullptr;
@@ -139,7 +144,7 @@ public:
 		m_array = newArray;
 		m_length--;
 	}
-
+	
 	void Resize(size_t length)
 	{
 		if (length == m_length)
